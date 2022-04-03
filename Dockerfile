@@ -4,8 +4,9 @@ FROM python:latest
 # Labels as key value pair
 LABEL Maintainer="Rikj000"
 
-# Any working direcrtory can be chosen as per choice like '/' or '/home' etc, I have chosen /usr/app/src
-WORKDIR /usr/app/src
+# Prepare environment (Create folder & set the app working directory)
+RUN mkdir /discord-auto-ban
+WORKDIR /discord-auto-ban
 
 # Copy files from the working directory into the container
 COPY autoban.py ./
