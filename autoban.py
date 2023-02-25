@@ -21,7 +21,7 @@ whitelisted_user_ids = [
 
 ban_reason = 'Verification, the server name or moderator names are not allowed in the username to prevent scammers.'
 bot_token = 'your_bot_token_here'
-kick_instead_of_ban = False
+kick_instead_of_ban = False  # set to True to kick users instead of banning
 # === ↑ SETTINGS ↑ ============================================================
 
 bot = commands.Bot(command_prefix='.', intents=intents)

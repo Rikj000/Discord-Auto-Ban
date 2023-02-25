@@ -44,6 +44,7 @@ Improved by [@Rikj000](https://github.com/Rikj000) to counter the spam of bots p
 
     ban_reason = 'Verification, the server name or moderator names are not allowed in the username to prevent scammers.'
     bot_token = 'your_bot_token_here'
+    kick_instead_of_ban = False  # set to True to kick users instead of banning
     # === ↑ SETTINGS ↑ ============================================================
     ```
 - Finally, run `autoban.py` inside your terminal of choice.
