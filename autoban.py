@@ -21,10 +21,11 @@ whitelisted_user_ids = [
 
 ban_reason = 'Verification, the server name or moderator names are not allowed in the username to prevent scammers.'
 bot_token = 'your_bot_token_here'
+kick_instead_of_ban = False
 # === ↑ SETTINGS ↑ ============================================================
 
 bot = commands.Bot(command_prefix='.', intents=intents)
-
+action = 'kick' if kick_instead_of_ban is True else 'ban'
 
 @bot.event
 async def on_ready():
@@ -55,17 +56,19 @@ async def check_member(member: Member):
                         print(f'{member.name} matches the target string ({target_string})!')
 
                         try:
-                            print(f'Banning {member.name}!')
-                            await member.ban(reason=ban_reason)
+                            print(f'{"Kicking" if kick_instead_of_ban else "Banning"} {member.name}!')
+                            await member.kick(reason=ban_reason) if kick_instead_of_ban is True \
+                                else await member.ban(reason=ban_reason)
+
                             member_banned = True
                             break
                         except:
-                            print(f'Failed to ban {member.name}... :c')
+                            print(f'Failed to {action} {member.name}... :c')
     else:
         print(f'Member {member.name} is in whitelist, ignoring...')
 
     if member_banned is False:
-        print(f'No need to ban {member.name}, does not match the target strings!')
+        print(f'No need to {action} {member.name}, does not match the target strings!')
 
 
 @bot.event
